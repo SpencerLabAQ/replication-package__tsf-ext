@@ -155,21 +155,9 @@ if __name__ == "__main__":
     sarima_results_path = Path("..") / "data" / "tuning" / "SARIMA"
     sarima_results_path.mkdir(exist_ok=True, parents=True)
 
-    for (app_id, metric_id, aggregation, type, use), sub_df in df.groupby(["application", "metric", "aggregation", "type", "use"]):
+    for (app_id, metric_id, aggregation, type), sub_df in df.groupby(["application", "metric", "aggregation", "type"]):
 
-        if app_id <= 2:
-            continue
-
-        logging.info(f"Analysis of {app_id=} {metric_id=}")
-        if not use:
-            logging.info(f"Skipping the time series for missing values")
-            continue
-
-        if aggregation == "daily":
-            seasonality = 7
-        else:
-            # hourly
-            seasonality = 24
+        seasonality = 7
 
         ts = sub_df.sort_values(by=["dt#"], ascending=True).y.values
         processed = proc_data(ts, describe=True)
