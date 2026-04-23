@@ -4,7 +4,7 @@
 
 The experiment can be executed entirely on a CPU. However, utilizing a GPU with CUDA can significantly speed up the process.
 
-- The experiment has been conducted using Python 3.8. Later Python versions are expected to be supported but have not been tested, and compatibility issues with certain libraries may arise. Alternatively, you can use the *python:3.8-bookworm* docker image containing python 3.8.
+- The experiment has been conducted using Python 3.8. The repository includes a Dockerfile that builds an image based on *python:3.8-bookworm* and installs all required dependencies.
 - The required Python packages are listed in *requirements.txt* file. 
 
 ---
